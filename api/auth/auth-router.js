@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { validateRegistrationBody, checkUsernameAvailable } = require("./auth-middleware")
-
+const bcrypt = require('bcryptjs')
+const { BCRYPT_ROUNDS } = require('../../config')
+const Users = require("./../users/users-model")
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -27,8 +29,18 @@ const { validateRegistrationBody, checkUsernameAvailable } = require("./auth-mid
       the response body should include a string exactly as follows: "username taken".
   */
 
-router.post('/register', validateRegistrationBody, checkUsernameAvailable, (req, res) => {
-  res.end('implement register, please!');
+router.post('/register', validateRegistrationBody, checkUsernameAvailable,  async (req, res, next) => {
+  let user = req.body
+  const hash = bcrypt.hashSync(user.password, BCRYPT_ROUNDS)
+
+  user.password = hash
+
+  try {
+    const newUser = await Users.add(user)
+    res.status(201).json(newUser)
+  } catch(err){
+    next(err)
+  }
 
 });
 
