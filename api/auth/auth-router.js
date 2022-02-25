@@ -15,6 +15,7 @@ router.post(
   checkUsernameAvailable,
   async (req, res, next) => {
     let user = req.body;
+    console.log('user', user)
     const hash = bcrypt.hashSync(user.password, BCRYPT_ROUNDS);
 
     user.password = hash;

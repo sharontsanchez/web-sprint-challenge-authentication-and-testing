@@ -4,6 +4,7 @@ function validateRequestBody(req, res, next){
     if(!req.body.username || !req.body.username.trim() || !req.body.password || !req.body.password.trim()){
         return next({status: 400, message: 'username and password required'})
     }
+    next()
 }
 
 async function checkUsernameAvailable(req, res, next){
