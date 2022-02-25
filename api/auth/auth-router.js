@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { validateRegistrationBody, checkUsernameAvailable } = require("./auth-middleware")
+const { validateRequestBody, checkUsernameAvailable } = require("./auth-middleware")
 const bcrypt = require('bcryptjs')
 const { BCRYPT_ROUNDS } = require('../../config')
 const Users = require("./../users/users-model")
@@ -29,7 +29,7 @@ const Users = require("./../users/users-model")
       the response body should include a string exactly as follows: "username taken".
   */
 
-router.post('/register', validateRegistrationBody, checkUsernameAvailable,  async (req, res, next) => {
+router.post('/register', validateRequestBody, checkUsernameAvailable,  async (req, res, next) => {
   let user = req.body
   const hash = bcrypt.hashSync(user.password, BCRYPT_ROUNDS)
 
