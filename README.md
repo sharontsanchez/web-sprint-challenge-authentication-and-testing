@@ -54,6 +54,14 @@ Your finished project must include all of the following requirements (further in
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+The Session and Token-based Authentication methods are used to make a server trust any request sent by an authenticated user over the internet. The main difference is session-based authentication of the connection stores the authentication details. The session method makes the server store most of the details, while in the case of the token-based one the client stores them.
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+The bcrypt hashing function allows us to build a password security platform that scales with computation power and always hashes every password with a salt. Hashing user passwords is essential as user data is very crucial for any organization. 
+
 3. How are unit tests different from integration and end-to-end testing?
+Integration testing starts at the very early stages of development. Bugs are caught earlier, rather than later, in the cycle. It's easy to integrate with daily builds and easy to test in the development environment. Tests run faster compared to end-to-end tests. Aims to test how external systems work with internal modules, one by one.  Used to test a single process from third-party software that will be used in conjunction with your software.
+End-to-end testing is done when the product is almost ready for release. It may be impossible to perform until the product is nearing completion. Tests run slower compared to integration testing. Aims to test the user experience from start to finish. Can be used for either a single process being executed from start to finish or various different processes involving different applications.
+
 4. How does _Test Driven Development_ change the way we write applications and tests?
+A key benefit of test-driven development is that it makes the developer focus on requirements before writing code. The TDD method is a more balanced approach for software development which is mostly related to the three main activities: coding, testing, and designing.  Instead of chasing an optimal solution, the code and the test for that code are built for one use case at a time.  Overall, it can streamline the software development process and make it more efficient by delivering feedback faster and encouraging developers to write solid, clean code. 
